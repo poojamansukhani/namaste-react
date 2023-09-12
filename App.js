@@ -24,7 +24,7 @@ const HeaderComponent = () => {
         </div>
     )
 }
-const resObj = [
+const resLists = [
     {
         type:"restaurent",
         data:{
@@ -50,19 +50,46 @@ const resObj = [
             time:"30min",
             image:"e33e1d3ba7d6b2bb0d45e1001b731fcf"
         }
+    },
+    {
+        type:"restaurent",
+        data:{
+            id:"336",
+            name:"Meghna Food",
+            address:"69, Brrokfield",
+            rating:"4.8",
+            cusine:["Biryani", "Kari"],
+            priceForTwo:"300",
+            time:"30min",
+            image:"iivuhjc2mswi9lublktf"
+        }
+    },
+    {
+        type:"restaurent",
+        data:{
+            id:"337",
+            name:"Dominoz",
+            address:"69, Brrokfield",
+            rating:"4.7",
+            cusine:["Pizza", "Fries", "Coke"],
+            priceForTwo:"250",
+            time:"30min",
+            image:"fjqcvqfgqlw6h0atques"
+        }
     }
 ]
 const RestroCard = (props) =>{
     const { resData } = props;
+    const { name, cusine, rating, priceForTwo, time} = resData?.data
     return(
         <div className="res-card">
             <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.data.image} alt=""/>
             <div className="card-details">
-                <h3>{resData.data.name}</h3>
-                <h5>{resData.data.cusine.join(", ")}</h5>
-                <h6>{resData.data.rating}</h6>
-                <h6>Price for 2 {resData.data.priceForTwo}</h6>
-                <h6>{resData.data.time}</h6>
+                <h3>{name}</h3>
+                <h5>{cusine.join(", ")}</h5>
+                <h6>{rating}</h6>
+                <h6>Price for 2 {priceForTwo}</h6>
+                <h6>{time}</h6>
             </div>
         </div>
     )
@@ -75,8 +102,11 @@ const BodyComponent = () => {
                     Search
                 </div>
                 <div className="restro-container grid">
-                    <RestroCard resData={resObj[0]}/>
-                    <RestroCard resData={resObj[1]}/>
+                    {
+                        resLists.map((restaurent)=>{
+                            return <RestroCard key={restaurent.data.id} resData = {restaurent}/>
+                        })
+                    }
                 </div>
             </div>
         </div>
