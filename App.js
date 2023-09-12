@@ -24,24 +24,45 @@ const HeaderComponent = () => {
         </div>
     )
 }
-const resObj = {
-    type:"restaurent",
-    data:{
-        id:"334",
-        name:"Cakes & Crafts",
-        address:"69, Kormangla",
-        rating:"3.9",
+const resObj = [
+    {
+        type:"restaurent",
+        data:{
+            id:"334",
+            name:"Cakes & Crafts",
+            address:"69, Kormangla",
+            rating:"3.9",
+            cusine:["cakes", "pestries", "cheese cakes"],
+            priceForTwo:"300",
+            time:"30min",
+            image:"5aaa916ac77c127f5aee2eada1543071"
+        }
+    },
+    {
+        type:"restaurent",
+        data:{
+            id:"335",
+            name:"kfc",
+            address:"69, Whitefield",
+            rating:"4.5",
+            cusine:["Fries", "Burger"],
+            priceForTwo:"300",
+            time:"30min",
+            image:"e33e1d3ba7d6b2bb0d45e1001b731fcf"
+        }
     }
-}
-const RestroCard = ({resName, cusine, rating, time}) =>{
+]
+const RestroCard = (props) =>{
+    const { resData } = props;
     return(
         <div className="res-card">
-            <img src="https://pic.warmoven.in/catalog/product/cache/4e14bcb566d25893ae7201d4dbdc22fd/image/234187ae/strawberry-cake.jpg" alt=""/>
+            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resData.data.image} alt=""/>
             <div className="card-details">
-                <h3>{resName}</h3>
-                <h5>{cusine}</h5>
-                <h6>{rating}</h6>
-                <h6>{time}</h6>
+                <h3>{resData.data.name}</h3>
+                <h5>{resData.data.cusine.join(", ")}</h5>
+                <h6>{resData.data.rating}</h6>
+                <h6>Price for 2 {resData.data.priceForTwo}</h6>
+                <h6>{resData.data.time}</h6>
             </div>
         </div>
     )
@@ -54,8 +75,8 @@ const BodyComponent = () => {
                     Search
                 </div>
                 <div className="restro-container grid">
-                    <RestroCard resName="Cakes & Carfts" cusine="Cakes, Pestries, Cheese Cakes" rating="4.5" time="38min"/>
-                    <RestroCard resName="KFC" cusine="Burger, Fries, Fast Food" rating="4.6" time="30min"/>
+                    <RestroCard resData={resObj[0]}/>
+                    <RestroCard resData={resObj[1]}/>
                 </div>
             </div>
         </div>
