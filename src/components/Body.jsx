@@ -1,8 +1,18 @@
 import RestroCard from "./RestroCard";
 import resLists from "../utils/mockData.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Body = () => {
     const [lists, setLists] = useState(resLists)
+    useEffect(()=>{
+        fetchdata();
+    },[])
+    //Fetch data from API 
+    const fetchdata = async () =>{
+        const data = await fetch(
+            "https://jsonplaceholder.typicode.com/comments"
+        )
+        console.log("data", data)
+    }
     return(
         <div className="body">
             <div className="container">
