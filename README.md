@@ -1,4 +1,4 @@
-# namaste-react
+# BrushUp-react
 
 # Parcel
 - Dev Build

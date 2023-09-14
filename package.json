@@ -1,7 +1,7 @@
 {
-  "name": "namaste-react",
+  "name": "Brushup-React",
   "version": "1.0.0",
-  "description": "this is namaste react project",
+  "description": "Brushing up React",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
