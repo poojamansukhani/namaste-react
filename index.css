@@ -40,3 +40,4 @@ img{max-width: 100%;}
     grid-template-columns: repeat(4, 1fr); }
 .btn{background: #fff;border-radius: 3px;padding: 10px;border:1px solid #ffb9b9;cursor: pointer;}
 .filter{padding: 15px 0;}
+.shimmer-card{background: #ccc;height: 300px;}

@@ -1,10 +1,13 @@
 import RestroCard from "./RestroCard";
 import resLists from "../utils/mockData.js";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 const Body = () => {
-    const [lists, setLists] = useState(resLists)
+    const [lists, setLists] = useState([])
     useEffect(()=>{
-        fetchdata();
+        let interval = setInterval(() => fetchdata(true), (1000))
+    //destroy interval on unmount
+    return () => clearInterval(interval)
     },[])
     const fetchdata = async () =>{
         const data = await fetch(
@@ -15,7 +18,7 @@ const Body = () => {
     }
     //Spinner until data fetch
     if(lists.length === 0){
-        return <h1>Loading.....</h1>
+        return <Shimmer/>
     }
     return(
         <div className="body">
