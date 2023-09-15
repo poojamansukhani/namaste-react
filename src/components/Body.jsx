@@ -19,10 +19,8 @@ const Body = () => {
     }
     //Spinner until data fetch
     //Conditional Rendering
-    if(lists.length === 0){
-        return <div className="container"><ShimmerSimpleGallery card imageHeight={300} /></div>
-    }
-    return(
+   
+    return lists.length === 0 ? <div className="container"><ShimmerSimpleGallery card imageHeight={300} /></div> :(
         <div className="body">
             <div className="container">
                 <div className="filter">
