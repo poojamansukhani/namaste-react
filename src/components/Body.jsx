@@ -5,10 +5,13 @@ import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 const Body = () => {
     const [lists, setLists] = useState([])
+    const [searchRestro, setSearchRestro] = useState("");
+    const [filterRestro, setFilterRestro] = useState([]);
     useEffect(()=>{
-        let interval = setInterval(() => fetchdata(true), (1000))
+       // let interval = setInterval(() => fetchdata(true), (1000))
     //destroy interval on unmount
-    return () => clearInterval(interval)
+   // return () => clearInterval(interval)
+   fetchdata()
     },[])
     const fetchdata = async () =>{
         const data = await fetch(
@@ -16,6 +19,7 @@ const Body = () => {
         )
         const json = await data.json();
         setLists(json);
+        setFilterRestro(json);
     }
     //Spinner until data fetch
     //Conditional Rendering
@@ -28,18 +32,33 @@ const Body = () => {
                         let data = lists.filter(
                             (res) => res.data.rating > 4
                         );
-                        setLists(data);
+                        setFilterRestro(data);
                     }}>
                         Top Rated Restaurents
                     </button>
                     <button type="button" className="btn filter-btn" onClick={()=>{
                        
-                        setLists(resLists);
+                       setFilterRestro(resLists);
                     }}>Show All</button>
+                    <div className="search">
+                        <input type="text" value={searchRestro}
+                        onChange={(e)=>{
+                            setSearchRestro(e.target.value)
+                        }}
+                        />
+                        <button className="btn"
+                        onClick={()=>{
+                            let data = lists.filter(
+                                (res) => res.data.name.toLowerCase().includes(searchRestro.toLowerCase())
+                            );
+                            setFilterRestro(data);
+                        }}
+                        >Search</button>
+                    </div>
                 </div>
                 <div className="restro-container grid">
                     {
-                        lists.map((restaurent)=>{
+                        filterRestro.map((restaurent)=>{
                             return <RestroCard key={restaurent.data.id} resData = {restaurent}/>
                         })
                     }
