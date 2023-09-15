@@ -28,7 +28,7 @@ const Body = () => {
                         let data = lists.filter(
                             (res) => res.data.rating > 4
                         );
-                        setLists(data.data);
+                        setLists(data);
                     }}>
                         Top Rated Restaurents
                     </button>
