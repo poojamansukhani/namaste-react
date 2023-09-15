@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 export const Header = () => {
     let btnName = "Login";
     const [btnNameReact, setBtnNameReact] = useState("Login");
@@ -11,9 +12,9 @@ export const Header = () => {
                 </div>
                 <div className="nav">
                     <ul>
-                        <li>Home</li>
-                        <li>About Us</li>
-                        <li>Contact Us</li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about">About Us</Link></li>
+                        <li><Link to="/contact">Contact Us</Link></li>
                         <li>Cart</li>
                         <li className="btn" onClick={()=>{
                             btnNameReact === "Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
