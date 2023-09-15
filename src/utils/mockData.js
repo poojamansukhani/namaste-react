@@ -1,4 +1,5 @@
-let resLists = [
+let resLists = 
+[
     {
         type:"restaurent",
         data:{

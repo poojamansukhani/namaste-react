@@ -6,12 +6,16 @@ const Body = () => {
     useEffect(()=>{
         fetchdata();
     },[])
-    //Fetch data from API 
     const fetchdata = async () =>{
         const data = await fetch(
-            "https://jsonplaceholder.typicode.com/comments"
+            "http://localhost:3000/restro"
         )
-        console.log("data", data)
+        const json = await data.json();
+        setLists(json);
+    }
+    //Spinner until data fetch
+    if(lists.length === 0){
+        return <h1>Loading.....</h1>
     }
     return(
         <div className="body">
@@ -21,7 +25,7 @@ const Body = () => {
                         let data = lists.filter(
                             (res) => res.data.rating > 4
                         );
-                        setLists(data);
+                        setLists(data.data);
                     }}>
                         Top Rated Restaurents
                     </button>
