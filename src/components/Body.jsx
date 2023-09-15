@@ -2,6 +2,7 @@ import RestroCard from "./RestroCard";
 import resLists from "../utils/mockData.js";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { ShimmerSimpleGallery } from "react-shimmer-effects";
 const Body = () => {
     const [lists, setLists] = useState([])
     useEffect(()=>{
@@ -17,8 +18,9 @@ const Body = () => {
         setLists(json);
     }
     //Spinner until data fetch
+    //Conditional Rendering
     if(lists.length === 0){
-        return <Shimmer/>
+        return <div className="container"><ShimmerSimpleGallery card imageHeight={300} /></div>
     }
     return(
         <div className="body">
