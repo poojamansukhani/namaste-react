@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export const Header = () => {
     let btnName = "Login";
     const [btnNameReact, setBtnNameReact] = useState("Login");
