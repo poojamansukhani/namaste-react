@@ -3,6 +3,7 @@ import resLists from "../utils/mockData.js";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
+import { Link } from "react-router-dom";
 const Body = () => {
     const [lists, setLists] = useState([])
     const [searchRestro, setSearchRestro] = useState("");
@@ -59,7 +60,9 @@ const Body = () => {
                 <div className="restro-container grid">
                     {
                         filterRestro.map((restaurent)=>{
-                            return <RestroCard key={restaurent.data.id} resData = {restaurent}/>
+                            return <Link to={"/restaurent/"+restaurent.data.id} key={restaurent.data.id}>
+                                    <RestroCard resData = {restaurent}/>
+                                </Link>
                         })
                     }
                 </div>
