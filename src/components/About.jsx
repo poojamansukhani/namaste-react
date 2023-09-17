@@ -11,16 +11,14 @@ class About extends React.Component{
     componentDidMount(){
         console.log("Parent component did mount")
     }
+    
     render(){
         console.log("Parent render is called")
         return(
             <div>
                 <h1>About Us Page</h1> 
-                <User name={"John"} location={"London"}/>
                 <UserClass name={"Mellisa"} location={"US"}/>
-                
-                <UserClass name={"Elon Musk"} location={"Dubai"}/>
-                <Contact />
+                <UserClass name={"Mellisa"} location={"US"}/>
             </div>
         )
     }
