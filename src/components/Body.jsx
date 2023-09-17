@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
     const [lists, setLists] = useState([])
     const [searchRestro, setSearchRestro] = useState("");
@@ -25,6 +26,9 @@ const Body = () => {
     //Spinner until data fetch
     //Conditional Rendering
    
+const onelineStatus = useOnlineStatus();
+if(onelineStatus === false) return <h1>Looks like you are offline! Please check your Internet connection.</h1>
+
     return lists.length === 0 ? <div className="container"><ShimmerSimpleGallery card imageHeight={300} /></div> :(
         <div className="body">
             <div className="container">
