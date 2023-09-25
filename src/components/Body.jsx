@@ -6,23 +6,32 @@ import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 const Body = () => {
-    const [lists, setLists] = useState([])
+    const [lists, setLists] = useState([]);
     const [searchRestro, setSearchRestro] = useState("");
     const [filterRestro, setFilterRestro] = useState([]);
     useEffect(()=>{
        // let interval = setInterval(() => fetchdata(true), (1000))
     //destroy interval on unmount
    // return () => clearInterval(interval)
-   fetchdata()
+   fetchdata();
     },[])
     const fetchdata = async () =>{
         const data = await fetch(
-            "http://localhost:3000/restro"
+            'https://corsproxy.io/?' + encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
         )
         const json = await data.json();
-        setLists(json);
-        setFilterRestro(json);
+        setLists(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        console.log(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilterRestro(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
+    // const fetchdataa = async () =>{
+    //     const data = await fetch(
+    //         'https://corsproxy.io/?' + encodeURIComponent('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING')
+    //     )
+    //     const json = await data.json();
+    //     setListss(json);
+    //     console.log("HI", listss)
+    // }
     //Spinner until data fetch
     //Conditional Rendering
    
@@ -35,7 +44,7 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                 <div className="filter">
                     <button type="button" className="btn filter-btn" onClick={()=>{
                         let data = lists.filter(
-                            (res) => res.data.rating > 4
+                            (res) => res.info.rating > 4
                         );
                         setFilterRestro(data);
                     }}>
@@ -54,7 +63,7 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                         <button className="btn"
                         onClick={()=>{
                             let data = lists.filter(
-                                (res) => res.data.name.toLowerCase().includes(searchRestro.toLowerCase())
+                                (res) => res.info.name.toLowerCase().includes(searchRestro.toLowerCase())
                             );
                             setFilterRestro(data);
                         }}
@@ -64,7 +73,7 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                 <div className="restro-container grid">
                     {
                         filterRestro.map((restaurent)=>{
-                            return <Link to={"/restaurent/"+restaurent.data.id} key={restaurent.data.id}>
+                            return <Link to={"/restaurent/"+restaurent.info.id} key={restaurent.info.id}>
                                     <RestroCard resData = {restaurent}/>
                                 </Link>
                         })

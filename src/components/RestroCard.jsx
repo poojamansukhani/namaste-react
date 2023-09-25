@@ -1,16 +1,17 @@
 import {CDN_URL} from "../utils/constants.js";
 const RestroCard = (props) =>{
     const { resData } = props;
-    const { name, cusine, rating, priceForTwo, time} = resData?.data
+    const { name, cuisines, rating, costForTwo} = resData?.info
+    console.log("resData?.info", resData?.info)
     return(
         <div className="res-card">
-            <img src={CDN_URL + resData.data.image} alt=""/>
+            <img src={CDN_URL + resData.info.cloudinaryImageId} alt=""/>
             <div className="card-details">
                 <h3>{name}</h3>
-                <h5>{cusine.join(", ")}</h5>
+                <h5 className="cuisines">{cuisines.join(", ")}</h5>
                 <h6>{rating}</h6>
-                <h6>Price for 2 {priceForTwo}</h6>
-                <h6>{time}</h6>
+                <h6>{costForTwo}</h6>
+                <h6>Time {resData?.info?.sla?.deliveryTime}</h6>
             </div>
         </div>
     )
