@@ -8,6 +8,7 @@ const Restaurant = () =>{
     
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId);
+    console.log("resId", resId)
     console.log(resInfo,"resinfo")
     if(resInfo === null){
        return <ShimmerSimpleGallery/>
