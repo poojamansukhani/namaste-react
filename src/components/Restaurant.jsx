@@ -40,8 +40,8 @@ console.log(ITEMS_SEARCHED,"sdfsdsdfsd")
             <p>{cuisines.join(", ")}</p>
             <h2>Menu</h2>
             <ul>
-            {ITEMS_SEARCHED.map((item)=>{
-                   return( <li  key={item?.id}>
+            {ITEMS_SEARCHED.map((item, index)=>{
+                   return( <li  key={index}>
                         {item?.name} -{" Rs. "}
                         {item?.price / 100 || item?.defaultPrice / 100}
                     </li>)
