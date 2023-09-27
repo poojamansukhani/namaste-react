@@ -8,37 +8,47 @@ const Restaurant = () =>{
     
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId);
-    console.log("resId", resId)
-    console.log(resInfo,"resinfo")
     if(resInfo === null){
        return <ShimmerSimpleGallery/>
     }
     const GRAB_DATA = resInfo?.data?.cards[0]?.card?.card?.info
-    console.log(GRAB_DATA,"this is grab data")
-
     const {name, cuisines} = GRAB_DATA;
 
+// ku6 restro me crousel hai aur ku6 restro me nai 
+// jis me hai crousel usme index [1] uska data hai 
+// thats why you are facing this issue 
+// you hard coded so much 
+
+
+ cat_data_2 =
+      resInfo.data.cards[2].groupedCard?.cardGroupMap?.REGULAR.cards.filter(
+        (data) => data.card.card?.["@type"].includes("ItemCategory")
+      );
+       const Search_Data = cat_data_2.map((data) =>
+    data.card.card.itemCards?.map((data) => data.card.info)
+  );
+const ITEMS_SEARCHED = Search_Data.flat();
+console.log(ITEMS_SEARCHED,"sdfsdsdfsd")
+
     const item_card_grab = resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
-    console.log(item_card_grab,"this is from which item card dist...")
-    const {itemCards} = item_card_grab;
 
+    const itemCards = item_card_grab.itemCards;
 
-    // console.log(resInfo?.data)
-    // console.log(resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card)
     return(
         <div className="container">
-            {/* <h1>{name}</h1> */}
+            <h1>{name}</h1>
             <p>{cuisines.join(", ")}</p>
             <h2>Menu</h2>
             <ul>
-                {itemCards.map((item)=>(
+            {ITEMS_SEARCHED.map((item)=>{
+                   return( <li  key={item?.id}>
+                        {item?.name} -{" Rs. "}
+                        {item?.price / 100 || item?.defaultPrice / 100}
+                    </li>)
+                    
 
-                    <li key={item.card.info.id}>
-                        {item.card.info.name} -{" Rs. "}
-                        {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-                    </li>
-
-                ))}
+})}
+    
                 <li></li>
             </ul>
         </div>

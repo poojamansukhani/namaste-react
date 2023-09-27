@@ -44,5 +44,5 @@ img{max-width: 100%;}
 .user-card{padding: 10px; border:1px solid #ccc}
 .cuisines{overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;}
