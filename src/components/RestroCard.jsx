@@ -3,15 +3,16 @@ const RestroCard = (props) =>{
     const { resData } = props;
     const { name, cuisines, rating, costForTwo, avgRating} = resData?.info
     return(
-        <div className="res-card">
-            <img src={CDN_URL + resData.info.cloudinaryImageId} alt=""/>
-            <div className="card-details">
-                <h3>{name}</h3>
-                <h5 className="cuisines">{cuisines.join(", ")}</h5>
-                <h6>{rating}</h6>
-                <h6>{costForTwo}</h6>
-                <h6>Time {resData?.info?.sla?.deliveryTime}</h6>
-                <h6>Rating {avgRating}</h6>
+        <div className="res-card rounded-sm border border-solid border-gray-300 shadow-md mb-6 hover:shadow-lg">
+            <img src={CDN_URL + resData.info.cloudinaryImageId} alt="" className=" h-[160px] w-[100%]"/>
+            <div className="card-details px-[15px] pb-[15px]">
+                <h3 className="text-1xl font-bold underline py-1 text-orange-400">{name}</h3>
+                <h5 className="cuisines mb-4">{cuisines.join(", ")}</h5>
+                <p className="pb-2">{costForTwo}</p>
+                <div className="flex justify-between">
+                    <p>Time {resData?.info?.sla?.deliveryTime}</p>
+                    <p>Rating {avgRating}</p>
+                </div>
             </div>
         </div>
     )

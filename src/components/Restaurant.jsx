@@ -14,12 +14,6 @@ const Restaurant = () =>{
     const GRAB_DATA = resInfo?.data?.cards[0]?.card?.card?.info
     const {name, cuisines} = GRAB_DATA;
 
-// ku6 restro me crousel hai aur ku6 restro me nai 
-// jis me hai crousel usme index [1] uska data hai 
-// thats why you are facing this issue 
-// you hard coded so much 
-
-
  cat_data_2 =
       resInfo.data.cards[2].groupedCard?.cardGroupMap?.REGULAR.cards.filter(
         (data) => data.card.card?.["@type"].includes("ItemCategory")
@@ -32,11 +26,11 @@ console.log(ITEMS_SEARCHED,"sdfsdsdfsd")
 
     const item_card_grab = resInfo?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card
 
-    const itemCards = item_card_grab.itemCards;
+   // const itemCards = item_card_grab.itemCards;
 
     return(
-        <div className="container">
-            <h1>{name}</h1>
+        <div>
+            <h1 className=" text-xl underline">{name}</h1>
             <p>{cuisines.join(", ")}</p>
             <h2>Menu</h2>
             <ul>
@@ -48,8 +42,6 @@ console.log(ITEMS_SEARCHED,"sdfsdsdfsd")
                     
 
 })}
-    
-                <li></li>
             </ul>
         </div>
     )

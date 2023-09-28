@@ -6,20 +6,20 @@ export const Header = () => {
     const [btnNameReact, setBtnNameReact] = useState("Login");
     const onelineStatus = useOnlineStatus();
     return(
-        <div className="header">
+        <div className="px-4 py-4 bg-orange-50 fixed top-0 left-0 right-0 shadow-sm">
             <div className="container">
-                <div className="row justify-space-between align-center">
-                <div>
-                    <a href="" className="logo">Bhukkad Bazar</a>
-                </div>
+                <div className="justify-between flex items-center">
+                    <div>
+                        <a href="/" className="text-xl underline italic">Bhukkad Bazar</a>
+                    </div>
                 <div className="nav">
-                    <ul>
-                        <li>Online status : {onelineStatus ? "✅" : "🔴"}</li>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About Us</Link></li>
-                        <li><Link to="/contact">Contact Us</Link></li>
-                        <li>Cart</li>
-                        <li className="btn" onClick={()=>{
+                    <ul className="flex">
+                        <li className="px-4">Online status : {onelineStatus ? "✅" : "🔴"}</li>
+                        <li className="px-2"><Link to="/">Home</Link></li>
+                        <li className="px-2"><Link to="/about">About Us</Link></li>
+                        <li className="px-2"><Link to="/contact">Contact Us</Link></li>
+                        <li className="px-2">Cart</li>
+                        <li className="pl-2" onClick={()=>{
                             btnNameReact === "Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
                         }}>{btnNameReact}</li>
                     </ul>

@@ -9,7 +9,11 @@ const App = () => {
     return(
         <div className="app">
             <Header/>
-            <Outlet/>
+            <div className="container">
+                <div className="mt-20">
+                     <Outlet/>
+                </div>
+            </div>
         </div>
     )
 }
