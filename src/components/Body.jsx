@@ -1,4 +1,4 @@
-import RestroCard from "./RestroCard";
+import RestroCard, {withPromotedLabel} from "./RestroCard";
 import resLists from "../utils/mockData.js";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
@@ -9,6 +9,7 @@ const Body = () => {
   const [lists, setLists] = useState([]);
     const [searchRestro, setSearchRestro] = useState("");
     const [filterRestro, setFilterRestro] = useState([]);
+    const RestroCardPromoted = withPromotedLabel(RestroCard);
     useEffect(()=>{
    fetchdata();
     },[])
@@ -18,10 +19,9 @@ const Body = () => {
         )
         const json = await data.json();
         setLists(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log("Lists", lists)
         setFilterRestro(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-   
+    console.log("filterRestro", filterRestro);
 const onelineStatus = useOnlineStatus();
 if(onelineStatus === false) return <h1>Looks like you are offline! Please check your Internet connection.</h1>
 
@@ -60,7 +60,10 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                 {
                     filterRestro.map((restaurent)=>{
                         return <Link className=" w-[270px] sm:w-[50%] xs:w-[100%] mx-[15px] card " to={"/restaurent/"+restaurent.info.id} key={restaurent.info.id}>
-                                <RestroCard resData = {restaurent}/>
+                            {/** if totalRatingsString is "5K+" then will show promoted label **/}
+                            {console.log(restaurent, "restaurent")}
+                            {restaurent.info.totalRatingsString == "5K+" ? <RestroCardPromoted resData = {restaurent}/> : <RestroCard resData = {restaurent}/> }
+                                
                             </Link>
                     })
                 }

@@ -6,7 +6,7 @@ export const Header = () => {
     const [btnNameReact, setBtnNameReact] = useState("Login");
     const onelineStatus = useOnlineStatus();
     return(
-        <div className="px-4 py-4 bg-orange-50 fixed top-0 left-0 right-0 shadow-sm">
+        <div className="px-4 py-4 bg-orange-50 fixed z-10 top-0 left-0 right-0 shadow-sm">
             <div className="container">
                 <div className="justify-between flex items-center">
                     <div>

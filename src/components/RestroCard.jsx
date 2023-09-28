@@ -17,4 +17,18 @@ const RestroCard = (props) =>{
         </div>
     )
 }
+
+//Higher order component which takes input as restroCard and output will be enhance  restro card promoted 
+
+export const withPromotedLabel = (RestroCard) => {
+    return (props) =>{
+        return(
+            <div>
+                <label className="promoted absolute z-1 bg-orange-400 px-2 text-white ml-[-10px]">Promoted</label>
+                <RestroCard {...props}/>
+            </div>
+        )
+    }
+}
+
 export default RestroCard;
