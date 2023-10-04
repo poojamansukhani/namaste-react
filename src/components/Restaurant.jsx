@@ -2,12 +2,14 @@ import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import RestaurantCategory from "./RestaurantCategory";
-
+import {useState} from "react";
 
 const Restaurant = () =>{
     
     const {resId} = useParams();
     const resInfo = useRestaurantMenu(resId);
+    const [showIndex, setShowIndex] = useState(0);
+    
     if(resInfo === null){
        return <ShimmerSimpleGallery/>
     }
@@ -31,8 +33,9 @@ const ITEMS_SEARCHED = Search_Data.flat();
             <h1 className=" text-xl underline font-bold">{name}</h1>
             <p>{cuisines.join(", ")}</p>
             <br/>
-            {cat_data_2.map((category)=>(
-                    <RestaurantCategory key={category.card.card.title} data={category.card.card}/>
+            {cat_data_2.map((category, index)=>(
+                    <RestaurantCategory key={category.card.card.title} data={category.card.card} showItems={index === showIndex  ? true : false}
+                    setShowIndex = {()=>setShowIndex(index)} />
                 ))
             }
 
