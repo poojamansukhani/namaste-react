@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 export const Header = () => {
     let btnName = "Login";
     const [btnNameReact, setBtnNameReact] = useState("Login");
     const onelineStatus = useOnlineStatus();
+    const {loggedInUser} = useContext(UserContext);
     return(
         <div className="px-4 py-4 bg-orange-50 fixed z-10 top-0 left-0 right-0 shadow-sm">
             <div className="container">
@@ -19,9 +21,10 @@ export const Header = () => {
                         <li className="px-2"><Link to="/about">About Us</Link></li>
                         <li className="px-2"><Link to="/contact">Contact Us</Link></li>
                         <li className="px-2">Cart</li>
-                        <li className="pl-2" onClick={()=>{
+                        <li className="px-2" onClick={()=>{
                             btnNameReact === "Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
                         }}>{btnNameReact}</li>
+                        <li>{loggedInUser}</li>
                     </ul>
                 </div>
                 </div>
