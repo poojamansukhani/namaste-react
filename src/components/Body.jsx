@@ -1,15 +1,17 @@
 import RestroCard, {withPromotedLabel} from "./RestroCard";
 import resLists from "../utils/mockData.js";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { ShimmerSimpleGallery } from "react-shimmer-effects";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
   const [lists, setLists] = useState([]);
     const [searchRestro, setSearchRestro] = useState("");
     const [filterRestro, setFilterRestro] = useState([]);
     const RestroCardPromoted = withPromotedLabel(RestroCard);
+    // const {loggedInUser, setUserName} = useContext(UserContext);
     useEffect(()=>{
    fetchdata();
     },[])
@@ -54,6 +56,7 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                         setFilterRestro(data);
                     }}
                     >Search</button>
+                    {/* <input type="text" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)}/> */}
                 </div>
             </div>
             <div className="restro-container flex flex-wrap mx-[-15px]">
