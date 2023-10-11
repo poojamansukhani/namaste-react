@@ -19,3 +19,4 @@
 - Tree shaking - remove unused code 
 - Diiferent dev & prod bundlers
 
+run test case - npm run test 
