@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider , Outlet} from "react-router-dom";
 import Restaurant from "./components/Restaurant";
 import Error from "./components/Error";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 const App = () => {
     const [userName, setUserName] = useState();
     useEffect(()=>{
@@ -15,18 +18,20 @@ const App = () => {
         setUserName(data.name);
     },[])
     return(
-        <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
-        <div className="app">
-        <UserContext.Provider value={{loggedInUser:"PM"}}>
-            <Header/>
-        </UserContext.Provider>
-            <div className="container">
-                <div className="mt-20">
-                     <Outlet/>
+        <Provider store={appStore}>
+            <UserContext.Provider value={{loggedInUser:userName, setUserName}}>
+            <div className="app">
+            <UserContext.Provider value={{loggedInUser:"PM"}}>
+                <Header/>
+            </UserContext.Provider>
+                <div className="container">
+                    <div className="mt-20">
+                        <Outlet/>
+                    </div>
                 </div>
             </div>
-        </div>
-        </UserContext.Provider>
+            </UserContext.Provider>
+        </Provider>
     )
 }
 const Contact = lazy(()=>import('./components/Contact'));
@@ -47,6 +52,10 @@ const appRoute = createBrowserRouter([
             {
                 path:"/contact",
                 element:<Suspense fallback={<h1>Loading...</h1>}><Contact/></Suspense>
+            },
+            {
+                path:"/cart",
+                element:<Suspense fallback={<h1>Loading...</h1>}><Cart/></Suspense>
             },
             {
                 path:"/restaurent/:resId",
