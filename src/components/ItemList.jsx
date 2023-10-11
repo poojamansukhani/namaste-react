@@ -1,12 +1,31 @@
 import { useDispatch } from "react-redux";
 import {menuImage} from "../utils/constants";
 import {addItem, removeItem} from "../utils/cartSlice";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import loadCartFromLocalStorage from "../utils/loadCartFromLocalStorage"
 const ItemList = ({items}) => {
     const dispatch = useDispatch();
     // update store add item to cart and update store 
+    const cart = useSelector((store)=>{
+        //what portion of store access needed read items from store
+        return store.cart.items;
+    });
     const handleAddItem = (item) => {
-        dispatch(addItem(item))
+        dispatch(addItem(item));
+        const updatedCartData = [...cart, item]; // Assuming cart is your cart data in Redux
+        localStorage.setItem('cart', JSON.stringify(updatedCartData));
     }
+    useEffect(() => {
+        // Check if cart data exists in local storage
+        const cartDataFromLocalStorage = localStorage.getItem('cart');
+        
+        if (cartDataFromLocalStorage) {
+          // If cart data exists, parse and load it into the Redux store
+          const parsedCartData = JSON.parse(cartDataFromLocalStorage);
+          dispatch(loadCartFromLocalStorage(parsedCartData)); // Create an action for this
+        }
+      }, [dispatch]);
     const handleRemoveItem = (item) =>{
         dispatch(removeItem(item));
     }
