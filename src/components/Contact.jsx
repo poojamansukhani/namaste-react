@@ -20,7 +20,7 @@ class Contact extends React.Component{
                         <input type="text" className=" border border-gray-300 p-2" placeholder="Message"/>
                         </div>
                         
-                        <button className=" bg-orange-400 text-white">Submit</button>
+                        <button className=" bg-orange-400 text-white p-2">Submit</button>
                     </form>
                 </div>
             )
