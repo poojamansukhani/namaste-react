@@ -1,0 +1,102 @@
+{
+    "info": {
+        "id": "121603",
+        "name": "Kannur Food Point",
+        "cloudinaryImageId": "bmwn4n4bn6n1tcpc8x2h",
+        "locality": "SG Palya",
+        "areaName": "Tavarekere",
+        "costForTwo": "₹300 for two",
+        "cuisines": [
+            "Kerala",
+            "Chinese"
+        ],
+        "avgRating": 3.9,
+        "feeDetails": {
+            "restaurantId": "121603",
+            "fees": [
+                {
+                    "name": "BASE_DISTANCE",
+                    "fee": 6500
+                },
+                {
+                    "name": "BASE_TIME"
+                },
+                {
+                    "name": "ANCILLARY_SURGE_FEE"
+                }
+            ],
+            "totalFee": 6500
+        },
+        "parentId": "20974",
+        "avgRatingString": "3.9",
+        "totalRatingsString": "10K+",
+        "sla": {
+            "deliveryTime": 32,
+            "lastMileTravel": 6.7,
+            "serviceability": "SERVICEABLE",
+            "slaString": "32 mins",
+            "lastMileTravelString": "6.7 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2023-10-13 02:50:00",
+            "opened": true
+        },
+        "badges": {
+            "textExtendedBadges": [
+                {
+                    "iconId": "guiltfree/GF_Logo_android_3x",
+                    "shortDescription": "options available",
+                    "fontColor": "#7E808C"
+                }
+            ]
+        },
+        "isOpen": true,
+        "aggregatedDiscountInfoV2": {},
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {
+                    "badgeObject": [
+                        {
+                            "attributes": {
+                                "description": "",
+                                "fontColor": "#7E808C",
+                                "iconId": "guiltfree/GF_Logo_android_3x",
+                                "shortDescription": "options available"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+        "context": "seo-data-1011283b-9348-46d5-a4c0-50bdaf270889"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/kannur-food-point-sg-palya-tavarekere-bangalore-121603",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}

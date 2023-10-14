@@ -26,10 +26,12 @@ export const Header = () => {
                         <li className="px-2"><Link to="/">Home</Link></li>
                         <li className="px-2"><Link to="/about">About Us</Link></li>
                         <li className="px-2"><Link to="/contact">Contact Us</Link></li>
-                        <li className="px-2"><Link to="/cart">Cart ({cartItems.length} items)</Link></li>
-                        <li className="px-2" onClick={()=>{
+                        <li className="px-2"><Link to="/cart">Cart ({cartItems.length} - items)</Link></li>
+                        <li className="px-2">
+                            <button  onClick={()=>{
                             btnNameReact === "Login" ? setBtnNameReact("Logout"): setBtnNameReact("Login");
-                        }}>{btnNameReact}</li>
+                        }}>{btnNameReact}</button>
+                        </li>
                         <li>{loggedInUser}</li>
                     </ul>
                 </div>
