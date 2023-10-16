@@ -8,3 +8,8 @@ it("should render restro card component with data", ()=>{
     const name = screen.getByText("Kannur Food Point");
     expect(name).toBeInTheDocument()
 })
+xit("should render Restro card component with promoted label", ()=>{
+    render(<withPromotedLabel resData={MOCK_DATA}/>);
+    const label = screen.getByText("Promoted");
+    expect(label).toBeInTheDocument();
+})

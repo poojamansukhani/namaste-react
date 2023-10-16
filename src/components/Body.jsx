@@ -23,7 +23,6 @@ const Body = () => {
         setLists(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilterRestro(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
-    console.log("filterRestro", filterRestro);
 const onelineStatus = useOnlineStatus();
 if(onelineStatus === false) return <h1>Looks like you are offline! Please check your Internet connection.</h1>
 
@@ -43,7 +42,7 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                     setFilterRestro(lists);
                 }}>Show All</button>
                 <div className="search">
-                    <input className="border border-solid border-orange-400 rounded-sm" type="text" value={searchRestro}
+                    <input data-testid="searchInput" className="border border-solid border-orange-400 rounded-sm" type="text" value={searchRestro}
                     onChange={(e)=>{
                         setSearchRestro(e.target.value)
                     }}
@@ -64,7 +63,6 @@ if(onelineStatus === false) return <h1>Looks like you are offline! Please check 
                     filterRestro.map((restaurent)=>{
                         return <Link className=" w-[270px] sm:w-[50%] xs:w-[100%] mx-[15px] card " to={"/restaurent/"+restaurent.info.id} key={restaurent.info.id}>
                             {/** if totalRatingsString is "5K+" then will show promoted label **/}
-                            {console.log(restaurent, "restaurent")}
                             {restaurent.info.totalRatingsString == "5K+" ? <RestroCardPromoted resData = {restaurent}/> : <RestroCard resData = {restaurent}/> }
                                 
                             </Link>

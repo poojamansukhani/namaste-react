@@ -3,7 +3,7 @@ const RestroCard = (props) =>{
     const { resData } = props;
     const { name, cuisines, rating, costForTwo, avgRating} = resData?.info
     return(
-        <div className="res-card rounded-sm border border-solid border-gray-300 shadow-md mb-6 hover:shadow-lg">
+        <div data-testid="resCard" className="res-card rounded-sm border border-solid border-gray-300 shadow-md mb-6 hover:shadow-lg">
             <img src={CDN_URL + resData.info.cloudinaryImageId} alt="" className=" h-[160px] w-[100%]"/>
             <div className="card-details px-[15px] pb-[15px]">
                 <h3 className="text-1xl font-bold underline py-1 text-orange-400">{name}</h3>
