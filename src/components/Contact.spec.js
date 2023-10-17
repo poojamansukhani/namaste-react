@@ -4,21 +4,21 @@ import React from 'react';
 import "@testing-library/jest-dom";
 describe("should test contact", ()=>{
     //Before running all test case
-    beforeAll(()=>{
-        console.log("Before all");
-    })
-    // Before each test case whatever want to do Helpful  in cleanup task
-    beforeEach(()=>{
-        console.log("Before each");
-    })
-    //After completing all test 
-    afterAll(()=>{
-        console.log("After all");
-    })
-    //After each test this will get call
-    afterEach(()=>{
-        console.log("After each")
-    })
+    // beforeAll(()=>{
+    //     console.log("Before all");
+    // })
+    // // Before each test case whatever want to do Helpful  in cleanup task
+    // beforeEach(()=>{
+    //     console.log("Before each");
+    // })
+    // //After completing all test 
+    // afterAll(()=>{
+    //     console.log("After all");
+    // })
+    // //After each test this will get call
+    // afterEach(()=>{
+    //     console.log("After each")
+    // })
     it("Should load contact us component", ()=>{
         render(<Contact/>);
         const heading = screen.getByRole("heading");

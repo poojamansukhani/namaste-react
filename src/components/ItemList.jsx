@@ -32,7 +32,7 @@ const ItemList = ({items}) => {
     return (
         <div className="border border-solid border-grey text-left">
             {items.map((item, index) => (
-               <div key={index} className="p-4 pb-0">
+               <div data-testid="foodItems" key={index} className="p-4 pb-0">
                    <div className="flex justify-between">
                        <div className="w-11/12">
                         <h4 className=" text-md">
